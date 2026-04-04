@@ -1,5 +1,5 @@
 {
-  "name": "CyberDost AI",
+  "name": "HP AI",
   "description": "A dual-mode AI assistant for cybersecurity enthusiasts and everyday users, behaving like a knowledgeable friend.",
   "requestFramePermissions": ["microphone"]
 }

@@ -196,8 +196,8 @@ export default function ChatInterface({ user }: { user: FirebaseUser }) {
       uid: user.uid,
       role: 'model',
       content: isHackerMode 
-        ? "System initialized. CyberDost (Hacker Edition) is online. Ready for deep technical analysis. What's our target today? 💻⚡"
-        : "Hello there! I'm CyberDost, your friendly AI companion. How can I help you today? 😊",
+        ? "System initialized. HP (Hacker Edition) is online. Ready for deep technical analysis. What's our target today? 💻⚡"
+        : "Hello there! I'm HP, your friendly AI companion. How can I help you today? 😊",
       timestamp: Date.now(),
       type: 'text',
       isHackerMode: isHackerMode
@@ -258,8 +258,8 @@ export default function ChatInterface({ user }: { user: FirebaseUser }) {
         uid: user.uid,
         role: 'model',
         content: nextMode 
-          ? "System initialized. CyberDost (Hacker Edition) is online. Ready for deep technical analysis. What's our target today? 💻⚡"
-          : "Hello there! I'm CyberDost, your friendly AI companion. How can I help you today? 😊",
+          ? "System initialized. HP (Hacker Edition) is online. Ready for deep technical analysis. What's our target today? 💻⚡"
+          : "Hello there! I'm HP, your friendly AI companion. How can I help you today? 😊",
         timestamp: Date.now(),
         type: 'text',
         isHackerMode: nextMode
@@ -514,7 +514,7 @@ export default function ChatInterface({ user }: { user: FirebaseUser }) {
                   "p-4 rounded-2xl mb-6 text-sm leading-relaxed",
                   isHackerMode ? "bg-black/40 border border-hacker-green/10" : "bg-zinc-50"
                 )}>
-                  Mr. Himanshu Yadav is a visionary developer and cybersecurity enthusiast. He created CyberDost to bridge the gap between complex security concepts and everyday users. His mission is to make the digital world safer and more accessible for everyone through friendly AI companionship.
+                  Mr. Himanshu Yadav is a visionary developer and cybersecurity enthusiast. He created HP to bridge the gap between complex security concepts and everyday users. His mission is to make the digital world safer and more accessible for everyone through friendly AI companionship.
                 </div>
 
                 <div className="flex gap-4">
@@ -556,7 +556,7 @@ export default function ChatInterface({ user }: { user: FirebaseUser }) {
                 <MessageCircle size={20} />
                 Share Your Feedback
               </h2>
-              <p className="text-sm opacity-60 mb-6">Arre dost, batao kaisa lag raha hai CyberDost? Tumhari feedback se hum ise aur behtar banayenge! 😊</p>
+              <p className="text-sm opacity-60 mb-6">Arre dost, batao kaisa lag raha hai HP? Tumhari feedback se hum ise aur behtar banayenge! 😊</p>
 
               {feedbackSubmitted ? (
                 <div className="text-center py-8">
@@ -755,7 +755,7 @@ export default function ChatInterface({ user }: { user: FirebaseUser }) {
                 "font-bold text-lg sm:text-xl tracking-tight",
                 isHackerMode && "hacker-glow"
               )}>
-                CyberDost <span className="text-xs sm:text-sm font-normal opacity-70">{isHackerMode ? "[Hacker Edition]" : "AI"}</span>
+                HP <span className="text-xs sm:text-sm font-normal opacity-70">{isHackerMode ? "[Hacker Edition]" : "AI"}</span>
               </h1>
               <p className="text-[10px] sm:text-xs opacity-60">
                 {isHackerMode ? "Status: Root Access Granted 🔓" : "Online & Ready to Help 😊"}
@@ -1051,7 +1051,7 @@ export default function ChatInterface({ user }: { user: FirebaseUser }) {
           </div>
         </div>
         <p className="text-[10px] text-center mt-2 opacity-40">
-          CyberDost can make mistakes. Always verify technical commands.
+          HP can make mistakes. Always verify technical commands.
         </p>
       </div>
     </div>

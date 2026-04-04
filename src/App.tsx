@@ -57,7 +57,7 @@ export default function App() {
           <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white">
             <Sparkles size={32} />
           </div>
-          <p className="text-zinc-500 font-medium">CyberDost is waking up...</p>
+          <p className="text-zinc-500 font-medium">HP is waking up...</p>
         </div>
       </div>
     );
@@ -78,7 +78,7 @@ export default function App() {
               <div className="w-20 h-20 bg-indigo-600 rounded-3xl flex items-center justify-center text-white mx-auto mb-6 shadow-lg shadow-indigo-200">
                 <Sparkles size={40} />
               </div>
-              <h1 className="text-3xl font-bold text-zinc-900 mb-2">CyberDost AI</h1>
+              <h1 className="text-3xl font-bold text-zinc-900 mb-2">HP AI</h1>
               <p className="text-zinc-500 mb-8 leading-relaxed">
                 Welcome back, dost! Login to save your chat history and access advanced AI features.
               </p>
