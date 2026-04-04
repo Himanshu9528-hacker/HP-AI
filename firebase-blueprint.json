@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "ChatSession": {
+      "title": "Chat Session",
+      "description": "A conversation session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "uid": { "type": "string" },
+        "title": { "type": "string" },
+        "isHackerMode": { "type": "boolean" },
+        "timestamp": { "type": "number" },
+        "lastMessageAt": { "type": "number" }
+      },
+      "required": ["id", "uid", "title", "timestamp"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "A message in a chat session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sessionId": { "type": "string" },
+        "uid": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "model"] },
+        "content": { "type": "string" },
+        "timestamp": { "type": "number" },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "data": { "type": "string" },
+              "mimeType": { "type": "string" },
+              "name": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["id", "sessionId", "uid", "role", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": { "$ref": "User" },
+      "description": "User profile documents"
+    },
+    "/sessions/{sessionId}": {
+      "schema": { "$ref": "ChatSession" },
+      "description": "Chat session documents"
+    },
+    "/sessions/{sessionId}/messages/{messageId}": {
+      "schema": { "$ref": "Message" },
+      "description": "Messages within a session"
+    }
+  }
+}

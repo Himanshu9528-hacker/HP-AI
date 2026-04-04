@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Fields: uid, email, displayName, photoURL, createdAt
+    //
+    // Collection: sessions
+    // Fields: id, uid, title, isHackerMode, timestamp, lastMessageAt
+    //
+    // Collection: sessions/{sessionId}/messages
+    // Fields: id, sessionId, uid, role, content, timestamp, attachments
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isSessionOwner(sessionId) {
+      return isAuthenticated() && request.auth.uid == get(/databases/$(database)/documents/sessions/$(sessionId)).data.uid;
+    }
+
+    // User Rules
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && request.resource.data.uid == uid;
+      allow update: if isOwner(uid) && request.resource.data.uid == uid;
+    }
+
+    // Session Rules
+    match /sessions/{sessionId} {
+      allow read: if isAuthenticated() && resource.data.uid == request.auth.uid;
+      allow create: if isAuthenticated() && request.resource.data.uid == request.auth.uid;
+      allow update: if isAuthenticated() && resource.data.uid == request.auth.uid && request.resource.data.uid == request.auth.uid;
+      allow delete: if isAuthenticated() && resource.data.uid == request.auth.uid;
+
+      // Message Rules
+      match /messages/{messageId} {
+        allow read: if isSessionOwner(sessionId);
+        allow create: if isSessionOwner(sessionId) && request.resource.data.uid == request.auth.uid;
+        allow update, delete: if false; // Messages are immutable for now
+      }
+    }
+  }
+}
